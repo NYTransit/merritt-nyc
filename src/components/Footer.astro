@@ -1,0 +1,23 @@
+---
+import { externalLinks } from '../data/links';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <p>© {year} Brian Merritt</p>
+    <div class="footer-side">
+      <ul aria-label="External profiles">
+        {
+          externalLinks.map((link) => (
+            <li>
+              <a href={link.href} rel="me noreferrer">{link.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <p>Made in NYC.</p>
+    </div>
+  </div>
+</footer>

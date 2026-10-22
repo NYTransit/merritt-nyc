@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '../assets/images/hero-nyc-placeholder.jpg';
+import newYorkImage from '../assets/images/new-york-placeholder.jpg';
+import PageIntro from '../components/PageIntro.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="New York | MERRITT.NYC"
+  description="A personal visual notebook about Manhattan, city life, architecture, and details worth remembering."
+>
+  <div class="page-shell">
+    <PageIntro eyebrow="The city" title="New York." subtitle="Boston roots. New York home." />
+
+    <div class="prose-stack">
+      <section class="prose-section">
+        <h2>A visual notebook in progress</h2>
+        <p>
+          This will be a place for Manhattan photography, interesting streets and buildings,
+          small discoveries, and the occasional observation about living in New York.
+        </p>
+      </section>
+    </div>
+
+    <div class="photo-grid" aria-label="New York editorial placeholders">
+      <figure class="editorial-figure">
+        <Image
+          src={newYorkImage}
+          alt="Tree-lined Manhattan street in late afternoon after rain, used as an editorial placeholder"
+          widths={[640, 960, 1280, 1800]}
+          sizes="(max-width: 1180px) calc(100vw - 40px), 1100px"
+          format="webp"
+          loading="eager"
+        />
+        <figcaption>Editorial placeholder — location intentionally unspecified.</figcaption>
+      </figure>
+      <figure class="editorial-figure">
+        <Image
+          src={heroImage}
+          alt="Black-and-white tree-lined Manhattan street with prewar buildings, used as an editorial placeholder"
+          widths={[480, 720, 960]}
+          sizes="(max-width: 767px) calc(100vw - 40px), 535px"
+          format="webp"
+          loading="lazy"
+        />
+        <figcaption>Editorial placeholder — replace with a personal photograph.</figcaption>
+      </figure>
+    </div>
+  </div>
+</BaseLayout>

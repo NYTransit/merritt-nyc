@@ -1,0 +1,32 @@
+---
+import { externalLinks } from '../data/links';
+import PageIntro from '../components/PageIntro.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Elsewhere on the Internet | MERRITT.NYC"
+  description="Confirmed public profiles and projects from Brian Merritt elsewhere on the internet."
+>
+  <div class="page-shell">
+    <PageIntro
+      eyebrow="Links"
+      title="Elsewhere on the internet."
+      subtitle="A short, deliberately edited list of places to find me."
+    />
+
+    <ul class="link-directory">
+      {
+        externalLinks.map((link) => (
+          <li>
+            <a href={link.href} rel="me noreferrer">
+              <strong>{link.label}</strong>
+              <span>{link.description}</span>
+              <span class="external-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>

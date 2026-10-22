@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import labImage from '../assets/images/lab-placeholder.jpg';
+import PageIntro from '../components/PageIntro.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const labProjects = (await getCollection('projects'))
+  .filter((project) => project.data.category === 'Lab')
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="The Lab | MERRITT.NYC"
+  description="AI, Macs, home servers, tools, and technology experiments from Brian Merritt."
+>
+  <div class="page-shell">
+    <PageIntro eyebrow="Technology" title="The Lab." subtitle="AI, Macs, servers, and figuring things out." />
+
+    <figure class="editorial-figure editorial-feature">
+      <Image
+        src={labImage}
+        alt="A warm home technology workspace with a desktop computer and server, used as an editorial placeholder"
+        widths={[640, 960, 1280, 1800]}
+        sizes="(max-width: 1180px) calc(100vw - 40px), 1100px"
+        format="webp"
+        loading="eager"
+      />
+      <figcaption>Editorial placeholder — replace with Brian's actual setup photography.</figcaption>
+    </figure>
+
+    <div class="project-list" aria-label="Lab project drafts">
+      {
+        labProjects.map((project, index) => (
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            category={project.data.category}
+            year={project.data.year}
+            status={project.data.status}
+            index={index + 1}
+          />
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,60 @@
+---
+import PageIntro from '../components/PageIntro.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About Brian Merritt | MERRITT.NYC"
+  description="About Brian Merritt: Boston roots, life in New York, technology, fatherhood, and an enduring curiosity about how things work."
+>
+  <div class="page-shell">
+    <PageIntro
+      eyebrow="About"
+      title="A little more about me."
+      subtitle="Originally from Boston, now firmly planted in New York City."
+    />
+
+    <div class="prose-stack">
+      <section class="prose-section" aria-labelledby="about-intro">
+        <h2 id="about-intro">The longer version</h2>
+        <p>
+          I'm Brian. Originally from Boston, now firmly planted in New York City. I've spent most
+          of my career building and scaling technology companies, but there's quite a bit more to
+          life than work.
+        </p>
+      </section>
+
+      <section class="prose-section" aria-labelledby="family-heading">
+        <h2 id="family-heading">Being Dad</h2>
+        <p>
+          I'm the father of two teenage daughters. They're smart, funny, opinionated, and completely
+          different from each other.
+        </p>
+        <p>
+          One has a creative streak and a love of the arts and sciences. The other has an
+          imagination that runs circles around mine, with interests ranging from animation to
+          mythology.
+        </p>
+        <p>Being their dad is easily the most important part of my life.</p>
+      </section>
+
+      <section class="prose-section" aria-labelledby="work-heading">
+        <h2 id="work-heading">Work</h2>
+        <p>
+          I've spent my career helping software and technology companies grow. Today, I work in AI
+          and software, which means I get to spend a lot of time around technology that's changing
+          faster than most of us can keep up with.
+        </p>
+      </section>
+
+      <section class="prose-section" aria-labelledby="curiosity-heading">
+        <h2 id="curiosity-heading">Curiosity</h2>
+        <p>
+          I've always liked figuring out how things work, especially when they probably don't need
+          fixing. That curiosity has led to a collection of Macs, home servers, AI experiments,
+          LEGO models, and a few projects that have taken considerably longer than expected.
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

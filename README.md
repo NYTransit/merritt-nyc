@@ -40,7 +40,7 @@ Edit `src/components/Hero.astro` for the opening copy and `src/pages/index.astro
 
 ### Replace the hero photograph
 
-Replace `src/assets/images/hero-nyc-placeholder.png`, keeping the same filename, or update the imports in `src/components/Hero.astro` and `src/layouts/BaseLayout.astro`. Use a wide image with enough resolution for a 1,800-pixel desktop rendition. Remove the placeholder caption after the replacement has been approved for public use.
+Replace `src/assets/images/hero-nyc-placeholder.jpg`, keeping the same filename, or update the imports in `src/components/Hero.astro` and `src/layouts/BaseLayout.astro`. Use a wide image with enough resolution for a 1,800-pixel desktop rendition. Remove the placeholder caption after the replacement has been approved for public use.
 
 ### Add a Lab project
 

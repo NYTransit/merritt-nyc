@@ -1,0 +1,59 @@
+---
+import collectionImage from '../assets/images/collection-placeholder.jpg';
+import labImage from '../assets/images/lab-placeholder.jpg';
+import newYorkImage from '../assets/images/new-york-placeholder.jpg';
+import Hero from '../components/Hero.astro';
+import SectionTile from '../components/SectionTile.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout>
+  <Hero />
+
+  <section class="home-about" aria-labelledby="about-heading">
+    <div class="home-about-inner">
+      <p class="eyebrow">The short version</p>
+      <h2 class="section-heading" id="about-heading">A little about me</h2>
+      <p>
+        I spend my days building and scaling technology businesses. Outside of work, I'm raising
+        two very different teenage daughters, experimenting with AI, working on projects, or
+        figuring out how to make something work better.
+      </p>
+    </div>
+  </section>
+
+  <section class="home-interests" aria-labelledby="interests-heading">
+    <div class="section-heading-row">
+      <h2 class="section-heading" id="interests-heading">Things I'm into</h2>
+      <p class="section-note">Three ongoing interests</p>
+    </div>
+
+    <div class="interests-grid">
+      <SectionTile
+        title="The Lab"
+        description="AI, Macs, home servers and experiments."
+        href="/lab/"
+        image={labImage}
+        alt="A warm home technology workspace with a desktop computer and server, used as an editorial placeholder"
+        index="01"
+      />
+      <SectionTile
+        title="The Collection"
+        description="LEGO, collectibles and the occasional obsession."
+        href="/collection/"
+        image={collectionImage}
+        alt="An intricate architectural brick model on a shelf, used as an editorial placeholder"
+        index="02"
+      />
+      <SectionTile
+        title="New York"
+        description="City life, photography and things worth sharing."
+        href="/new-york/"
+        image={newYorkImage}
+        alt="A tree-lined Manhattan street after rain, used as an editorial placeholder"
+        index="03"
+        wide
+      />
+    </div>
+  </section>
+</BaseLayout>

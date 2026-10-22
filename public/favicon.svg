@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Merritt monogram</title>
+  <rect width="64" height="64" rx="4" fill="#202020"/>
+  <path d="M14 46V18h7.5L32 35.2 42.5 18H50v28h-7V29.1L32 46.3 21 29.1V46z" fill="#FAF9F6"/>
+  <rect x="14" y="52" width="36" height="2" fill="#B66A42"/>
+</svg>

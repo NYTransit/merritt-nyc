@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import collectionImage from '../assets/images/collection-placeholder.jpg';
+import PageIntro from '../components/PageIntro.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="The Collection | MERRITT.NYC"
+  description="LEGO, collectibles, display models, and the occasional obsession from Brian Merritt."
+>
+  <div class="page-shell">
+    <PageIntro
+      eyebrow="Objects"
+      title="The Collection."
+      subtitle="LEGO, collectibles, and the occasional obsession."
+    />
+
+    <figure class="editorial-figure editorial-feature">
+      <Image
+        src={collectionImage}
+        alt="An intricate architectural brick model on a shelf, used as an editorial placeholder"
+        widths={[640, 960, 1280, 1800]}
+        sizes="(max-width: 1180px) calc(100vw - 40px), 1100px"
+        format="webp"
+        loading="eager"
+      />
+      <figcaption>Editorial placeholder — not an item from Brian's collection.</figcaption>
+    </figure>
+
+    <div class="empty-state">
+      <h2>The shelves are being catalogued.</h2>
+      <p>
+        Approved photographs, model names, set details, and personal notes will appear here. No
+        inventory has been invented for this first edition.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  year: number;
+  status: string;
+  index: number;
+}
+
+const { title, description, category, year, status, index } = Astro.props;
+---
+
+<article class="project-card">
+  <div class="project-number" aria-hidden="true">{String(index).padStart(2, '0')}</div>
+  <div class="project-copy">
+    <div class="project-meta">
+      <span>{category}</span>
+      <span>{year}</span>
+      <span>{status}</span>
+    </div>
+    <h2>{title}</h2>
+    <p>{description}</p>
+  </div>
+</article>

@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import PageIntro from '../components/PageIntro.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Projects & Experiments | MERRITT.NYC"
+  description="Personal technology projects, experiments, setups, and works in progress from Brian Merritt."
+>
+  <div class="page-shell">
+    <PageIntro
+      eyebrow="Projects"
+      title="Projects & experiments."
+      subtitle="Things I'm building, testing, collecting, and occasionally breaking."
+    />
+
+    <div class="project-list" aria-label="Project drafts">
+      {
+        projects.map((project, index) => (
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            category={project.data.category}
+            year={project.data.year}
+            status={project.data.status}
+            index={index + 1}
+          />
+        ))
+      }
+    </div>
+
+    <aside class="placeholder-note" aria-label="Project content note">
+      <strong>Draft index</strong>
+      <p>
+        These are intentionally light starting points, not claims about finished work. Details,
+        photographs, and technical notes can be added after they are reviewed for publication.
+      </p>
+    </aside>
+  </div>
+</BaseLayout>

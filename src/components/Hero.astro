@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '../assets/images/hero-nyc-placeholder.jpg';
+---
+
+<section class="home-hero" aria-labelledby="home-title">
+  <div class="hero-copy">
+    <p class="eyebrow">Manhattan, New York</p>
+    <h1 id="home-title">Brian Merritt.</h1>
+    <p class="hero-deck">New York. Technology.<br />And everything in between.</p>
+    <p class="hero-summary">
+      Technology executive, dad of two teenage daughters, lifelong tinkerer. Originally from
+      Boston. Living in NYC.
+    </p>
+  </div>
+
+  <figure class="hero-figure">
+    <Image
+      src={heroImage}
+      alt="Tree-lined Manhattan street with prewar buildings, shown as an editorial placeholder"
+      widths={[640, 960, 1280, 1800]}
+      sizes="(max-width: 1180px) calc(100vw - 40px), 1100px"
+      format="webp"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <figcaption>Editorial placeholder — replace with a personal New York photograph.</figcaption>
+  </figure>
+</section>
