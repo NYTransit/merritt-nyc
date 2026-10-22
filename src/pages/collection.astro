@@ -3,64 +3,70 @@ import PageIntro from '../components/PageIntro.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const collection = [
-  { date: '2026-10-01', name: 'Executor Super Star Destroyer', number: '75457', note: 'UCS' },
-  { date: '2026-10-01', name: 'Astro Bot', number: '40899', gift: true },
-  { date: '2026-10-01', name: "Darth Vader's Lightsaber", number: '40897', gift: true },
-  { date: '2026-04-30', name: "The Mandalorian's N-1 Starfighter", number: '75442' },
-  { date: '2026-04-30', name: 'The Mandalorian and Grogu Display', number: '5010320', gift: true },
-  { date: '2026-04-30', name: 'The Darksaber', number: '40917', gift: true },
-  { date: '2025-08-21', name: 'Shuttle Carrier Aircraft', number: '10360' },
-  { date: '2024-07-27', name: 'Notre-Dame de Paris', number: '21061' },
-  { date: '2024-07-27', name: 'Iconic Red Plane', number: '30669', gift: true },
-  { date: '2024-07-27', name: 'Police Off-Road Buggy Car', number: '30664', gift: true },
-  { date: '2024-07-27', name: 'Fun Creativity 12-in-1', number: '40593', gift: true },
-  { date: '2024-07-20', name: 'Mercedes-AMG F1 W14 E Performance', number: '42171' },
-  { date: '2024-07-20', name: 'Candy Store', number: '40692', gift: true },
-  { date: '2024-07-04', name: 'NASA Artemis Space Launch System', number: '10341' },
-  { date: '2024-07-03', name: 'Red London Telephone Box', number: '21347' },
-  { date: '2024-06-16', name: 'TIE Interceptor', number: '75382', note: 'UCS' },
-  { date: '2024-06-16', name: 'Trade Federation Troop Carrier', number: '40686', gift: true },
-  { date: '2024-06-16', name: 'AAT', number: '30680', gift: true },
-  { date: '2024-06-16', name: 'Battle of Yavin Collectible', number: '5008818', gift: true },
-  { date: '2024-04-22', name: 'Stitch', number: '43249' },
-  { date: '2024-01-08', name: 'NASA Apollo 11 Lunar Lander', number: '10266' },
-  { date: '2023-12-19', name: 'New York City', number: '21028' },
-  { date: '2023-12-13', name: 'Natural History Museum', number: '10326' },
-  { date: '2023-12-11', name: 'Alpine Lodge', number: '10325' },
-  { date: '2023-12-08', name: 'NASA Mars Rover Perseverance', number: '42158' },
-  { date: '2023-12-08', name: 'Snowtrooper Battle Pack', number: '75320' },
-  { date: '2023-12-08', name: 'Hoth AT-ST', number: '75322' },
-  { date: '2023-12-08', name: 'Disney Castle', number: '43222' },
-  { date: '2023-12-08', name: 'The Razor Crest', number: '75331', note: 'UCS' },
-  { date: '2023-12-08', name: 'Executor Super Star Destroyer', number: '75356', note: 'Second copy' },
-  { date: '2023-10-25', name: 'Imperial TIE Fighter', number: '75300' },
-  { date: '2023-09-23', name: 'AT-AP Walker', number: '75234' },
-  { date: '2023-09-23', name: 'Concorde', number: '10318' },
-  { date: '2023-09-23', name: 'PEUGEOT 9X8 24H Le Mans Hybrid Hypercar', number: '42156' },
-  { date: '2023-09-23', name: 'McLaren Formula 1 Race Car', number: '42141' },
-  { date: '2023-09-23', name: '2022 Ford GT', number: '42154' },
-  { date: '2023-09-23', name: 'Lamborghini Sián FKP 37', number: '42115' },
-  { date: '2023-09-23', name: 'Bugatti Chiron', number: '42083' },
-  { date: '2023-09-23', name: "Yoda's Jedi Starfighter", number: '75360' },
-  { date: '2023-09-23', name: 'X-Wing Starfighter', number: '75355', note: 'UCS' },
-  { date: '2023-09-23', name: 'Ferrari Daytona SP3', number: '42143' },
-  { date: '2023-09-23', name: 'Motorized Lighthouse', number: '21335' },
-  { date: '2023-09-21', name: 'Police Station', number: '10278' },
-  { date: '2022-12-06', name: 'NASA Space Shuttle Discovery', number: '10283' },
-  { date: '2022-12-02', name: 'NASA Apollo Saturn V', number: '92176' },
-  { date: '2022-12-02', name: 'Darth Vader Helmet', number: '75304' },
-  { date: '2022-11-06', name: 'Millennium Falcon', number: '75192', note: 'UCS' },
-  { date: '2022-11-06', name: 'World Map', number: '31203' },
-  { date: '2022-11-06', name: 'The Child (Grogu)', number: '75318' },
+  { date: '2026-10-01', name: 'Executor Super Star Destroyer', number: '75457', pieces: 6130, note: 'UCS' },
+  { date: '2026-04-30', name: "The Mandalorian's N-1 Starfighter", number: '75442', pieces: 1809 },
+  { date: '2025-08-21', name: 'Shuttle Carrier Aircraft', number: '10360', pieces: 2417 },
+  { date: '2024-07-27', name: 'Notre-Dame de Paris', number: '21061', pieces: 4382 },
+  { date: '2024-07-20', name: 'Mercedes-AMG F1 W14 E Performance', number: '42171', pieces: 1642 },
+  { date: '2024-07-04', name: 'NASA Artemis Space Launch System', number: '10341', pieces: 3601 },
+  { date: '2024-07-03', name: 'Red London Telephone Box', number: '21347', pieces: 1460 },
+  { date: '2024-06-16', name: 'TIE Interceptor', number: '75382', pieces: 1931, note: 'UCS' },
+  { date: '2024-04-22', name: 'Stitch', number: '43249', pieces: 730 },
+  { date: '2024-01-08', name: 'NASA Apollo 11 Lunar Lander', number: '10266', pieces: 1087 },
+  { date: '2023-12-19', name: 'New York City', number: '21028', pieces: 598 },
+  { date: '2023-12-13', name: 'Natural History Museum', number: '10326', pieces: 4015 },
+  { date: '2023-12-11', name: 'Alpine Lodge', number: '10325', pieces: 1517 },
+  { date: '2023-12-08', name: 'NASA Mars Rover Perseverance', number: '42158', pieces: 1132 },
+  { date: '2023-12-08', name: 'Snowtrooper Battle Pack', number: '75320', pieces: 105 },
+  { date: '2023-12-08', name: 'Hoth AT-ST', number: '75322', pieces: 586 },
+  { date: '2023-12-08', name: 'Disney Castle', number: '43222', pieces: 4837 },
+  { date: '2023-12-08', name: 'The Razor Crest', number: '75331', pieces: 6187, note: 'UCS' },
+  { date: '2023-12-08', name: 'Executor Super Star Destroyer', number: '75356', pieces: 630, note: 'Second copy' },
+  { date: '2023-10-25', name: 'Imperial TIE Fighter', number: '75300', pieces: 432 },
+  { date: '2023-09-23', name: 'AT-AP Walker', number: '75234', pieces: 689 },
+  { date: '2023-09-23', name: 'Concorde', number: '10318', pieces: 2083 },
+  { date: '2023-09-23', name: 'PEUGEOT 9X8 24H Le Mans Hybrid Hypercar', number: '42156', pieces: 1775 },
+  { date: '2023-09-23', name: 'McLaren Formula 1 Race Car', number: '42141', pieces: 1432 },
+  { date: '2023-09-23', name: '2022 Ford GT', number: '42154', pieces: 1466 },
+  { date: '2023-09-23', name: 'Lamborghini Sián FKP 37', number: '42115', pieces: 3696 },
+  { date: '2023-09-23', name: 'Bugatti Chiron', number: '42083', pieces: 3599 },
+  { date: '2023-09-23', name: "Yoda's Jedi Starfighter", number: '75360', pieces: 253 },
+  { date: '2023-09-23', name: 'X-Wing Starfighter', number: '75355', pieces: 1949, note: 'UCS' },
+  { date: '2023-09-23', name: 'Ferrari Daytona SP3', number: '42143', pieces: 3778 },
+  { date: '2023-09-23', name: 'Motorized Lighthouse', number: '21335', pieces: 2065 },
+  { date: '2023-09-21', name: 'Police Station', number: '10278', pieces: 2923 },
+  { date: '2022-12-06', name: 'NASA Space Shuttle Discovery', number: '10283', pieces: 2355 },
+  { date: '2022-12-02', name: 'NASA Apollo Saturn V', number: '92176', pieces: 1969 },
+  { date: '2022-12-02', name: 'Darth Vader Helmet', number: '75304', pieces: 834 },
+  { date: '2022-11-06', name: 'Millennium Falcon', number: '75192', pieces: 7541, note: 'UCS' },
+  { date: '2022-11-06', name: 'World Map', number: '31203', pieces: 11695 },
+  { date: '2022-11-06', name: 'The Child (Grogu)', number: '75318', pieces: 1073 },
 ];
 
 const years = [...new Set(collection.map((item) => item.date.slice(0, 4)))];
-const yearCounts = Object.fromEntries(
-  years.map((year) => [year, collection.filter((item) => item.date.startsWith(year)).length]),
+const yearPieceCounts = Object.fromEntries(
+  years.map((year) => [
+    year,
+    collection.filter((item) => item.date.startsWith(year)).reduce((sum, item) => sum + item.pieces, 0),
+  ]),
 );
-const giftCount = collection.filter((item) => item.gift).length;
-// Rebrickable catalog total. Gear items 5010320 and 5008818 contain no buildable pieces.
-const totalPieces = 98_178;
+const totalPieces = collection.reduce((sum, item) => sum + item.pieces, 0);
+type CollectionItem = (typeof collection)[number];
+const imageOverrides: Record<string, string> = {
+  '10318': 'https://images.brickset.com/sets/large/10318-1.jpg',
+};
+const imageUrl = (number: string) =>
+  imageOverrides[number] ?? `https://cdn.rebrickable.com/media/sets/${number}-1.jpg`;
+const productSlug = (name: string) =>
+  name
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[’']/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+const legoUrl = (item: CollectionItem) =>
+  `https://www.lego.com/en-us/product/${productSlug(item.name)}-${item.number}`;
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'short',
   day: 'numeric',
@@ -99,24 +105,26 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
     <section class="collection-overview" aria-labelledby="collection-overview-title">
       <div class="collection-overview-copy">
         <p class="eyebrow">The running count</p>
-        <h2 id="collection-overview-title">A little bit of everything, with a definite pull toward space.</h2>
+        <h2 id="collection-overview-title">
+          A little bit of everything, with a definite pull to a galaxy far, far away.
+        </h2>
         <p>
-          The catalog starts with the Millennium Falcon in 2022 and runs through the latest additions in 2026.
-          Acquisition dates are listed below; complimentary promotional sets are marked as gifts.
+          It all started with building the World Map with my daughters, then flying off in the Falcon together.
+          Now I’m undertaking the Executor Super Star Destroyer.
         </p>
       </div>
       <dl class="collection-stats" aria-label="Collection summary">
         <div>
-          <dt>Sets</dt>
+          <dt>Set count</dt>
           <dd>{collection.length}</dd>
         </div>
         <div>
-          <dt>Pieces</dt>
+          <dt>Piece count</dt>
           <dd class="collection-stat-pieces">{totalPieces.toLocaleString('en-US')}</dd>
         </div>
         <div>
-          <dt>Gifts</dt>
-          <dd>{giftCount}</dd>
+          <dt>Hours of fun</dt>
+          <dd class="collection-stat-infinity" aria-label="Unlimited">∞</dd>
         </div>
       </dl>
     </section>
@@ -172,29 +180,45 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
           <p class="eyebrow">Acquisition log</p>
           <h2 class="section-heading" id="collection-catalog-title">The complete catalog</h2>
         </div>
-        <p class="section-note">Newest first · Updated October 2026</p>
+        <p class="section-note">
+          Newest first · Reference thumbnails via
+          <a href="https://rebrickable.com/" rel="noreferrer">Rebrickable</a> and
+          <a href="https://brickset.com/" rel="noreferrer">Brickset</a>
+        </p>
       </div>
 
       {years.map((year) => (
         <section class="collection-year" aria-labelledby={`year-${year}`}>
           <div class="collection-year-heading">
             <h3 id={`year-${year}`}>{year}</h3>
-            <span>{yearCounts[year]} {yearCounts[year] === 1 ? 'set' : 'sets'}</span>
+            <span>{yearPieceCounts[year].toLocaleString('en-US')} pieces</span>
           </div>
           <ol class="collection-list">
             {collection
               .filter((item) => item.date.startsWith(year))
               .map((item) => (
                 <li class="collection-item">
-                  <time datetime={item.date}>{dateFormatter.format(new Date(`${item.date}T00:00:00Z`))}</time>
-                  <div class="collection-item-name">
-                    <strong>{item.name}</strong>
-                    <div class="collection-tags">
-                      {item.note && <span>{item.note}</span>}
-                      {item.gift && <span class="collection-tag-gift">Gift</span>}
+                  <a class="collection-item-link" href={legoUrl(item)}>
+                    <span class="collection-item-thumb" aria-hidden="true">
+                      <img
+                        src={imageUrl(item.number)}
+                        alt=""
+                        width="160"
+                        height="120"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </span>
+                    <time datetime={item.date}>{dateFormatter.format(new Date(`${item.date}T00:00:00Z`))}</time>
+                    <div class="collection-item-name">
+                      <strong>{item.name}</strong>
+                      <div class="collection-tags">
+                        {item.note && <span>{item.note}</span>}
+                        <span>{item.pieces.toLocaleString('en-US')} pieces</span>
+                      </div>
                     </div>
-                  </div>
-                  <span class="collection-set-number">#{item.number}</span>
+                    <span class="collection-set-number">#{item.number} <span aria-hidden="true">↗</span></span>
+                  </a>
                 </li>
               ))}
           </ol>
