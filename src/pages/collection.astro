@@ -59,6 +59,8 @@ const yearCounts = Object.fromEntries(
   years.map((year) => [year, collection.filter((item) => item.date.startsWith(year)).length]),
 );
 const giftCount = collection.filter((item) => item.gift).length;
+// Rebrickable catalog total. Gear items 5010320 and 5008818 contain no buildable pieces.
+const totalPieces = 98_178;
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'short',
   day: 'numeric',
@@ -109,8 +111,8 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
           <dd>{collection.length}</dd>
         </div>
         <div>
-          <dt>Years</dt>
-          <dd>{years.length}</dd>
+          <dt>Pieces</dt>
+          <dd class="collection-stat-pieces">{totalPieces.toLocaleString('en-US')}</dd>
         </div>
         <div>
           <dt>Gifts</dt>
