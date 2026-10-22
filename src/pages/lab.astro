@@ -1,24 +1,38 @@
 ---
-import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import labImage from '../assets/images/lab-placeholder.jpg';
 import PageIntro from '../components/PageIntro.astro';
-import ProjectCard from '../components/ProjectCard.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const labProjects = (await getCollection('projects'))
-  .filter((project) => project.data.category === 'Lab')
-  .sort((a, b) => a.data.order - b.data.order);
+const models = [
+  { name: 'Llama 3.2 3B', lane: 'Fast', context: '4K', role: 'Extraction, classification, tagging, and short rewrites' },
+  { name: 'Qwen2.5-Coder 7B', lane: 'Coder', context: '8K', role: 'Code and structured transformations' },
+  { name: 'Qwen3.5 9B', lane: 'Strong', context: '16K', role: 'Research synthesis, long documents, and ambiguous work' },
+  { name: 'L3 8B Stheno v3.2', lane: 'Experimental', context: '—', role: 'A separate quantized model kept outside the production router' },
+];
+
+const mcpTools = [
+  'Local task delegation',
+  'Public-web research',
+  'Headline extraction',
+  'Document parsing',
+  'Local file search',
+  'Usage reporting',
+];
 ---
 
 <BaseLayout
   title="The Lab | MERRITT.NYC"
-  description="AI, Macs, home servers, tools, and technology experiments from Brian Merritt."
+  description="Brian Merritt's local AI stack, Mac setup, home network, and media server—measured on the machines themselves."
 >
-  <div class="page-shell">
-    <PageIntro eyebrow="Technology" title="The Lab." subtitle="AI, Macs, servers, and figuring things out." />
+  <div class="page-shell lab-page">
+    <PageIntro
+      eyebrow="Technology"
+      title="The Lab."
+      subtitle="Local models, small protocols, useful machines—and the network tying them together."
+    />
 
-    <figure class="editorial-figure editorial-feature">
+    <figure class="editorial-figure editorial-feature lab-feature">
       <Image
         src={labImage}
         alt="A computer science workbench with servers, circuit boards and code displays, used as an editorial placeholder"
@@ -27,22 +41,264 @@ const labProjects = (await getCollection('projects'))
         format="webp"
         loading="eager"
       />
-      <figcaption>Editorial placeholder — replace with Brian's actual setup photography.</figcaption>
+      <figcaption>Editorial placeholder — the actual machines are quieter, smaller, and considerably less cinematic.</figcaption>
     </figure>
 
-    <div class="project-list" aria-label="Lab project drafts">
-      {
-        labProjects.map((project, index) => (
-          <ProjectCard
-            title={project.data.title}
-            description={project.data.description}
-            category={project.data.category}
-            year={project.data.year}
-            status={project.data.status}
-            index={index + 1}
-          />
-        ))
-      }
+    <aside class="lab-snapshot-note" aria-label="Inventory scope">
+      <span>Inventory snapshot · October 2026</span>
+      <p>
+        Measured locally and summarized for the public web. Private addresses, credentials, account names, and media
+        titles are intentionally omitted.
+      </p>
+    </aside>
+
+    <div class="lab-inventory">
+      <article class="lab-section" id="running-ai-locally">
+        <header class="lab-section-header">
+          <span class="lab-section-number" aria-hidden="true">01</span>
+          <div>
+            <p class="eyebrow">Local intelligence</p>
+            <h2>Running AI locally</h2>
+            <p>
+              Four model weights live on the Mac, exposed through six Ollama tags. Three of them form a
+              pressure-aware specialist router; the fourth stays available for experiments.
+            </p>
+          </div>
+        </header>
+
+        <dl class="lab-stats" aria-label="Local AI summary">
+          <div><dt>Model weights</dt><dd>4</dd></div>
+          <div><dt>Router lanes</dt><dd>3</dd></div>
+          <div><dt>Custom MCP tools</dt><dd>6</dd></div>
+          <div><dt>Installed weights</dt><dd>18.2 <small>GB</small></dd></div>
+        </dl>
+
+        <section class="lab-detail-block" aria-labelledby="model-roster-title">
+          <div class="lab-detail-heading">
+            <h3 id="model-roster-title">The model roster</h3>
+            <p>Small models, routed by the shape of the job.</p>
+          </div>
+          <div class="lab-model-grid">
+            {models.map((model) => (
+              <article class="lab-model-card">
+                <div class="lab-model-meta"><span>{model.lane}</span><span>{model.context}</span></div>
+                <h4>{model.name}</h4>
+                <p>{model.role}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <div class="lab-two-column">
+          <section class="lab-detail-block" aria-labelledby="router-title">
+            <div class="lab-detail-heading">
+              <h3 id="router-title">The token router</h3>
+              <p>Fast work stays fast; harder work earns more context.</p>
+            </div>
+            <ul class="lab-fact-list">
+              <li><strong>Fast lane</strong><span>Llama 3.2 3B · 4K context</span></li>
+              <li><strong>Coder lane</strong><span>Qwen2.5-Coder 7B · 8K context</span></li>
+              <li><strong>Strong lane</strong><span>Qwen3.5 9B · 16K, or 32K while exclusive</span></li>
+              <li><strong>Admission control</strong><span>Up to three simultaneous jobs with memory-pressure gates</span></li>
+            </ul>
+            <p class="lab-footnote">
+              The current 30-day routing log records 55 lane selections with no routing failures. New inference pauses
+              under elevated memory pressure or when available memory falls below 2 GB.
+            </p>
+          </section>
+
+          <section class="lab-detail-block" aria-labelledby="mcp-title">
+            <div class="lab-detail-heading">
+              <h3 id="mcp-title">MCP and local tools</h3>
+              <p>Two custom MCP servers: local_qwen for bounded local work and node_repl for persistent JavaScript.</p>
+            </div>
+            <ul class="lab-chip-list" aria-label="Local worker tools">
+              {mcpTools.map((tool) => <li>{tool}</li>)}
+            </ul>
+            <p class="lab-footnote">
+              The stack speaks MCP over stdio, native Ollama HTTP, and an OpenAI-compatible chat-completions API.
+              SQLite backs routing state, caching, and content-free usage metrics.
+            </p>
+          </section>
+        </div>
+
+        <section class="lab-callout" aria-labelledby="internet-title">
+          <div>
+            <p class="eyebrow">Internet access</p>
+            <h3 id="internet-title">Local search first, browser only when needed.</h3>
+          </div>
+          <p>
+            A self-hosted SearXNG container handles public search. Static page retrieval is preferred; one bounded
+            headless-browser slot can step in when ordinary fetching fails. Results are cached, citations are retained,
+            and research synthesis returns to the strong local model. There is no paid search API in this path.
+          </p>
+        </section>
+
+        <section class="lab-callout lab-callout-muted" aria-labelledby="photo-memory-title">
+          <div>
+            <p class="eyebrow">Also in the lab</p>
+            <h3 id="photo-memory-title">Photo Memory</h3>
+          </div>
+          <p>
+            A native Swift 6 macOS prototype for read-only Photos inventory, local SQLite metadata, and model-versioned
+            vector search. The app is deliberately offline: Photos stays untouched, previews are not persisted, and
+            production semantic search remains an experiment rather than a finished claim.
+          </p>
+        </section>
+      </article>
+
+      <article class="lab-section" id="mac-setup">
+        <header class="lab-section-header">
+          <span class="lab-section-number" aria-hidden="true">02</span>
+          <div>
+            <p class="eyebrow">The daily machine</p>
+            <h2>My Mac setup</h2>
+            <p>
+              The AI machine is a compact Mac mini that also serves as the development workstation and control point
+              for the rest of the home network.
+            </p>
+          </div>
+        </header>
+
+        <dl class="lab-stats" aria-label="Mac mini hardware summary">
+          <div><dt>Chip</dt><dd class="lab-stat-text">Apple M6</dd></div>
+          <div><dt>CPU cores</dt><dd>12</dd></div>
+          <div><dt>Memory</dt><dd>32 <small>GB</small></dd></div>
+          <div><dt>Internal SSD</dt><dd>1 <small>TB</small></dd></div>
+        </dl>
+
+        <div class="lab-two-column">
+          <section class="lab-detail-block" aria-labelledby="workbench-title">
+            <div class="lab-detail-heading">
+              <h3 id="workbench-title">The workbench</h3>
+              <p>macOS 27.0.1 · roughly 654 GiB currently available.</p>
+            </div>
+            <ul class="lab-fact-list">
+              <li><strong>Inference</strong><span>Ollama with three isolated local service lanes</span></li>
+              <li><strong>Development</strong><span>Codex, Python, Node/pnpm, Swift, and Git</span></li>
+              <li><strong>Containers</strong><span>Docker, currently hosting the local metasearch service</span></li>
+              <li><strong>Media tools</strong><span>FFmpeg for inspection, conversion, and measurement</span></li>
+            </ul>
+          </section>
+
+          <section class="lab-detail-block" aria-labelledby="extensions-title">
+            <div class="lab-detail-heading">
+              <h3 id="extensions-title">Agent tooling</h3>
+              <p>The coding environment is broader than the model runtime.</p>
+            </div>
+            <ul class="lab-chip-list">
+              <li>Browser and computer use</li>
+              <li>Code review</li>
+              <li>Documents and PDFs</li>
+              <li>Presentations</li>
+              <li>Spreadsheets</li>
+              <li>Visualization</li>
+            </ul>
+          </section>
+        </div>
+
+        <section class="lab-detail-block" aria-labelledby="network-title">
+          <div class="lab-detail-heading">
+            <h3 id="network-title">How the network fits together</h3>
+            <p>A private LAN joins three Macs, while local AI services remain bound to the inference machine.</p>
+          </div>
+          <div class="lab-network" role="img" aria-label="AI Mac mini, media server, and MacBook Air connected through a private home network">
+            <div class="lab-network-node">
+              <span>Compute</span>
+              <strong>AI Mac mini</strong>
+              <small>Models · router · development</small>
+            </div>
+            <div class="lab-network-hub">
+              <span aria-hidden="true">↔</span>
+              <strong>Private home LAN</strong>
+              <small>Bonjour · SMB · AirPlay</small>
+              <span aria-hidden="true">↔</span>
+            </div>
+            <div class="lab-network-node">
+              <span>Storage</span>
+              <strong>Media server</strong>
+              <small>Plex · shares · backups</small>
+            </div>
+            <div class="lab-network-node">
+              <span>Personal</span>
+              <strong>MacBook Air</strong>
+              <small>SMB · AirPlay · same LAN</small>
+            </div>
+          </div>
+          <p class="lab-footnote">
+            The MacBook Air advertises itself as model Mac17,3 and is reachable over SMB and AirPlay. No trusted
+            unattended login was available during this audit, so its storage and software remain intentionally
+            unreported.
+          </p>
+        </section>
+      </article>
+
+      <article class="lab-section" id="home-media-server">
+        <header class="lab-section-header">
+          <span class="lab-section-number" aria-hidden="true">03</span>
+          <div>
+            <p class="eyebrow">Storage and playback</p>
+            <h2>My home media server</h2>
+            <p>
+              A second Mac mini—model Macmini9,1—runs Plex and presents the large storage volumes used for media,
+              archives, shared files, and backups.
+            </p>
+          </div>
+        </header>
+
+        <dl class="lab-stats" aria-label="Media library summary">
+          <div><dt>Movies</dt><dd>71</dd></div>
+          <div><dt>TV episodes</dt><dd>72</dd></div>
+          <div><dt>Video runtime</dt><dd>168 <small>hrs</small></dd></div>
+          <div><dt>Indexed video</dt><dd>2.1 <small>TiB</small></dd></div>
+        </dl>
+
+        <div class="lab-two-column">
+          <section class="lab-detail-block" aria-labelledby="plex-title">
+            <div class="lab-detail-heading">
+              <h3 id="plex-title">Inside Plex</h3>
+              <p>Aggregate library data, without exposing the watch list.</p>
+            </div>
+            <ul class="lab-fact-list">
+              <li><strong>Movies</strong><span>71 titles · 135.4 hours · 2.06 TiB</span></li>
+              <li><strong>Television</strong><span>6 series · 11 seasons · 72 episodes</span></li>
+              <li><strong>Episode runtime</strong><span>32.6 hours · roughly 0.04 TiB</span></li>
+              <li><strong>Total video</strong><span>143 files · approximately 168 hours</span></li>
+            </ul>
+          </section>
+
+          <section class="lab-detail-block" aria-labelledby="server-title">
+            <div class="lab-detail-heading">
+              <h3 id="server-title">Server role</h3>
+              <p>macOS 27.0.1 on an M1-generation Mac mini.</p>
+            </div>
+            <ul class="lab-fact-list">
+              <li><strong>Plex</strong><span>Library catalog and playback</span></li>
+              <li><strong>SMB</strong><span>Media, archive, and system-volume sharing</span></li>
+              <li><strong>Time Machine</strong><span>Network and attached backup targets</span></li>
+              <li><strong>Bonjour</strong><span>Local service discovery; SSH is advertised but not used by this audit</span></li>
+            </ul>
+          </section>
+        </div>
+
+        <section class="lab-detail-block" aria-labelledby="volumes-title">
+          <div class="lab-detail-heading">
+            <h3 id="volumes-title">Volumes at a glance</h3>
+            <p>Binary capacity figures reported by the mounted filesystems.</p>
+          </div>
+          <div class="lab-table-wrap">
+            <table class="lab-table">
+              <thead><tr><th>Role</th><th>Capacity</th><th>Used</th><th>Available</th></tr></thead>
+              <tbody>
+                <tr><th>Main media</th><td>7.3 TiB</td><td>5.3 TiB · 73%</td><td>2.0 TiB</td></tr>
+                <tr><th>Cloud archive</th><td>3.6 TiB</td><td>184 GiB · 6%</td><td>3.4 TiB</td></tr>
+                <tr><th>Backup volume</th><td>523 GiB</td><td>346 GiB · 67%</td><td>177 GiB</td></tr>
+                <tr><th>Server system</th><td>228 GiB</td><td>131 GiB · 58%</td><td>98 GiB</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </article>
     </div>
   </div>
 </BaseLayout>

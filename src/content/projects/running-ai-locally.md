@@ -1,10 +1,10 @@
 ---
 title: Running AI Locally
-description: An editable starting point for notes about local models, practical tradeoffs, and experiments worth documenting.
+description: Four local model weights, a three-lane pressure-aware router, six custom MCP tools, and self-hosted web research on a 32 GB Mac mini.
 category: Lab
 year: 2026
-status: Draft
+status: Active
 order: 1
 ---
 
-This entry is intentionally unpublished beyond its summary. Add reviewed details before creating a public project page.
+The public Lab page contains an October 2026 inventory of the models, routing policy, protocols, and local research tools.

@@ -1,10 +1,10 @@
 ---
 title: My Home Media Server
-description: A placeholder for the story of a home media system, its purpose, and the lessons gathered along the way.
+description: An M1-generation Mac mini serving Plex, shared storage, and backups—71 movies, 72 television episodes, and roughly 168 hours of video.
 category: Lab
 year: 2026
-status: Draft
+status: Active
 order: 3
 ---
 
-This entry is intentionally unpublished beyond its summary. Do not add network or security details that should remain private.
+The public Lab page contains aggregate storage and library figures while keeping network addresses, accounts, and media titles private.
