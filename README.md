@@ -83,6 +83,8 @@ Before removing a placeholder label, confirm that the replacement image is licen
 
 The workflow at `.github/workflows/deploy.yml` follows the current official Astro GitHub Pages pattern. Every push to `main` builds and deploys the static site.
 
+The initial deployment uses `DEPLOY_TARGET: github-project` so the temporary preview works at `https://nytransit.github.io/merritt-nyc/`. At the DNS cutover, change that value to `custom-domain` (or remove the variable), rebuild, and then attach `merritt.nyc` in Pages settings.
+
 1. Create a public repository named `merritt-nyc` under the intended GitHub account.
 2. Push this project to the repository's `main` branch.
 3. In **Settings → Pages**, choose **GitHub Actions** as the deployment source.

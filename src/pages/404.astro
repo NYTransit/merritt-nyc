@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../utils/paths';
 ---
 
 <BaseLayout
@@ -11,7 +12,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <h1>Nothing here. Yet.</h1>
     <p>
       The page may have moved, or perhaps it was one of those projects that took considerably
-      longer than expected. <a class="quiet-link" href="/">Return home</a>.
+      longer than expected. <a class="quiet-link" href={withBase('/')}>Return home</a>.
     </p>
   </div>
 </BaseLayout>
