@@ -55,6 +55,9 @@ const collection = [
 ];
 
 const years = [...new Set(collection.map((item) => item.date.slice(0, 4)))];
+const yearCounts = Object.fromEntries(
+  years.map((year) => [year, collection.filter((item) => item.date.startsWith(year)).length]),
+);
 const giftCount = collection.filter((item) => item.gift).length;
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'short',
@@ -174,7 +177,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
         <section class="collection-year" aria-labelledby={`year-${year}`}>
           <div class="collection-year-heading">
             <h3 id={`year-${year}`}>{year}</h3>
-            <span>{collection.filter((item) => item.date.startsWith(year)).length} sets</span>
+            <span>{yearCounts[year]} {yearCounts[year] === 1 ? 'set' : 'sets'}</span>
           </div>
           <ol class="collection-list">
             {collection
