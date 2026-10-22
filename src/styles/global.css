@@ -679,6 +679,10 @@ p {
   line-height: 1;
 }
 
+.collection-stats .collection-stat-pieces {
+  font-size: clamp(1.5rem, 2.8vw, 2.35rem);
+}
+
 .collection-heading-row {
   margin-bottom: clamp(2rem, 4vw, 3rem);
 }
