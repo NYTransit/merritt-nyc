@@ -1,39 +1,200 @@
 ---
-import { Image } from 'astro:assets';
-import collectionImage from '../assets/images/collection-placeholder.jpg';
 import PageIntro from '../components/PageIntro.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const collection = [
+  { date: '2026-10-01', name: 'Executor Super Star Destroyer', number: '75457', note: 'UCS' },
+  { date: '2026-10-01', name: 'Astro Bot', number: '40899', gift: true },
+  { date: '2026-10-01', name: "Darth Vader's Lightsaber", number: '40897', gift: true },
+  { date: '2026-04-30', name: "The Mandalorian's N-1 Starfighter", number: '75442' },
+  { date: '2026-04-30', name: 'The Mandalorian and Grogu Display', number: '5010320', gift: true },
+  { date: '2026-04-30', name: 'The Darksaber', number: '40917', gift: true },
+  { date: '2025-08-21', name: 'Shuttle Carrier Aircraft', number: '10360' },
+  { date: '2024-07-27', name: 'Notre-Dame de Paris', number: '21061' },
+  { date: '2024-07-27', name: 'Iconic Red Plane', number: '30669', gift: true },
+  { date: '2024-07-27', name: 'Police Off-Road Buggy Car', number: '30664', gift: true },
+  { date: '2024-07-27', name: 'Fun Creativity 12-in-1', number: '40593', gift: true },
+  { date: '2024-07-20', name: 'Mercedes-AMG F1 W14 E Performance', number: '42171' },
+  { date: '2024-07-20', name: 'Candy Store', number: '40692', gift: true },
+  { date: '2024-07-04', name: 'NASA Artemis Space Launch System', number: '10341' },
+  { date: '2024-07-03', name: 'Red London Telephone Box', number: '21347' },
+  { date: '2024-06-16', name: 'TIE Interceptor', number: '75382', note: 'UCS' },
+  { date: '2024-06-16', name: 'Trade Federation Troop Carrier', number: '40686', gift: true },
+  { date: '2024-06-16', name: 'AAT', number: '30680', gift: true },
+  { date: '2024-06-16', name: 'Battle of Yavin Collectible', number: '5008818', gift: true },
+  { date: '2024-04-22', name: 'Stitch', number: '43249' },
+  { date: '2024-01-08', name: 'NASA Apollo 11 Lunar Lander', number: '10266' },
+  { date: '2023-12-19', name: 'New York City', number: '21028' },
+  { date: '2023-12-13', name: 'Natural History Museum', number: '10326' },
+  { date: '2023-12-11', name: 'Alpine Lodge', number: '10325' },
+  { date: '2023-12-08', name: 'NASA Mars Rover Perseverance', number: '42158' },
+  { date: '2023-12-08', name: 'Snowtrooper Battle Pack', number: '75320' },
+  { date: '2023-12-08', name: 'Hoth AT-ST', number: '75322' },
+  { date: '2023-12-08', name: 'Disney Castle', number: '43222' },
+  { date: '2023-12-08', name: 'The Razor Crest', number: '75331', note: 'UCS' },
+  { date: '2023-12-08', name: 'Executor Super Star Destroyer', number: '75356', note: 'Second copy' },
+  { date: '2023-10-25', name: 'Imperial TIE Fighter', number: '75300' },
+  { date: '2023-09-23', name: 'AT-AP Walker', number: '75234' },
+  { date: '2023-09-23', name: 'Concorde', number: '10318' },
+  { date: '2023-09-23', name: 'PEUGEOT 9X8 24H Le Mans Hybrid Hypercar', number: '42156' },
+  { date: '2023-09-23', name: 'McLaren Formula 1 Race Car', number: '42141' },
+  { date: '2023-09-23', name: '2022 Ford GT', number: '42154' },
+  { date: '2023-09-23', name: 'Lamborghini Sián FKP 37', number: '42115' },
+  { date: '2023-09-23', name: 'Bugatti Chiron', number: '42083' },
+  { date: '2023-09-23', name: "Yoda's Jedi Starfighter", number: '75360' },
+  { date: '2023-09-23', name: 'X-Wing Starfighter', number: '75355', note: 'UCS' },
+  { date: '2023-09-23', name: 'Ferrari Daytona SP3', number: '42143' },
+  { date: '2023-09-23', name: 'Motorized Lighthouse', number: '21335' },
+  { date: '2023-09-21', name: 'Police Station', number: '10278' },
+  { date: '2022-12-06', name: 'NASA Space Shuttle Discovery', number: '10283' },
+  { date: '2022-12-02', name: 'NASA Apollo Saturn V', number: '92176' },
+  { date: '2022-12-02', name: 'Darth Vader Helmet', number: '75304' },
+  { date: '2022-11-06', name: 'Millennium Falcon', number: '75192', note: 'UCS' },
+  { date: '2022-11-06', name: 'World Map', number: '31203' },
+  { date: '2022-11-06', name: 'The Child (Grogu)', number: '75318' },
+];
+
+const years = [...new Set(collection.map((item) => item.date.slice(0, 4)))];
+const giftCount = collection.filter((item) => item.gift).length;
+const dateFormatter = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
 ---
 
 <BaseLayout
-  title="The Collection | MERRITT.NYC"
-  description="LEGO, collectibles, display models, and the occasional obsession from Brian Merritt."
+  title="The LEGO Collection | MERRITT.NYC"
+  description="Brian Merritt's LEGO collection: Star Wars UCS sets, NASA builds, Technic cars, architecture, and more."
 >
-  <div class="page-shell">
+  <div class="page-shell collection-page">
     <PageIntro
-      eyebrow="Objects"
-      title="The Collection."
-      subtitle="LEGO, collectibles, and the occasional obsession."
+      eyebrow="The collection"
+      title="Built, displayed, catalogued."
+      subtitle="Starships, spacecraft, supercars, landmarks—and the occasional delightful oddity."
     />
 
-    <figure class="editorial-figure editorial-feature">
-      <Image
-        src={collectionImage}
-        alt="A LEGO Star Wars collection led by a Millennium Falcon display model, used as an editorial placeholder"
-        widths={[640, 960, 1280, 1800]}
-        sizes="(max-width: 1180px) calc(100vw - 40px), 1100px"
-        format="webp"
+    <figure class="editorial-figure editorial-feature collection-feature">
+      <img
+        src="https://live.staticflickr.com/4332/36462167393_a00ed1f54d_b.jpg"
+        alt="LEGO Ultimate Collector Series Millennium Falcon set 75192 photographed after assembly"
+        width="1024"
+        height="576"
         loading="eager"
+        fetchpriority="high"
+        decoding="async"
       />
-      <figcaption>Editorial placeholder — not an item from Brian's collection.</figcaption>
+      <figcaption>
+        Millennium Falcon · 75192. Temporary reference photo by
+        <a href="https://www.flickr.com/photos/brickset/36462167393" rel="noreferrer">Brickset</a>,
+        cropped · <a href="https://creativecommons.org/licenses/by/2.0/" rel="noreferrer">CC BY 2.0</a>.
+      </figcaption>
     </figure>
 
-    <div class="empty-state">
-      <h2>The shelves are being catalogued.</h2>
-      <p>
-        Approved photographs, model names, set details, and personal notes will appear here. No
-        inventory has been invented for this first edition.
-      </p>
-    </div>
+    <section class="collection-overview" aria-labelledby="collection-overview-title">
+      <div class="collection-overview-copy">
+        <p class="eyebrow">The running count</p>
+        <h2 id="collection-overview-title">A little bit of everything, with a definite pull toward space.</h2>
+        <p>
+          The catalog starts with the Millennium Falcon in 2022 and runs through the latest additions in 2026.
+          Acquisition dates are listed below; complimentary promotional sets are marked as gifts.
+        </p>
+      </div>
+      <dl class="collection-stats" aria-label="Collection summary">
+        <div>
+          <dt>Sets</dt>
+          <dd>{collection.length}</dd>
+        </div>
+        <div>
+          <dt>Years</dt>
+          <dd>{years.length}</dd>
+        </div>
+        <div>
+          <dt>Gifts</dt>
+          <dd>{giftCount}</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="collection-gallery" aria-labelledby="collection-gallery-title">
+      <div class="section-heading-row collection-heading-row">
+        <div>
+          <p class="eyebrow">A closer look</p>
+          <h2 class="section-heading" id="collection-gallery-title">Big ideas, brick by brick.</h2>
+        </div>
+        <p class="section-note">Reference photography · Personal photos coming later</p>
+      </div>
+
+      <div class="collection-gallery-grid">
+        <figure class="editorial-figure collection-gallery-item">
+          <img
+            src="https://live.staticflickr.com/4191/34429768012_d06d8d6945_b.jpg"
+            alt="Close-up of the LEGO NASA Apollo Saturn V rocket engines with an astronaut minifigure for scale"
+            width="1024"
+            height="685"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>
+            <strong>NASA Apollo Saturn V</strong>
+            The original 21309 edition; Brian's collection includes its 92176 reissue. Photo by
+            <a href="https://www.flickr.com/photos/brickset/34429768012" rel="noreferrer">Brickset</a>,
+            cropped · <a href="https://creativecommons.org/licenses/by/2.0/" rel="noreferrer">CC BY 2.0</a>.
+          </figcaption>
+        </figure>
+
+        <figure class="editorial-figure collection-gallery-item">
+          <img
+            src="https://live.staticflickr.com/65535/49973005011_2f53182b32_b.jpg"
+            alt="Close-up of the V12 engine inside the LEGO Technic Lamborghini Sián FKP 37"
+            width="1024"
+            height="768"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>
+            <strong>Lamborghini Sián FKP 37 · 42115</strong>
+            Photo by <a href="https://www.flickr.com/photos/brickset/49973005011" rel="noreferrer">Brickset</a>,
+            cropped · <a href="https://creativecommons.org/licenses/by/2.0/" rel="noreferrer">CC BY 2.0</a>.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="collection-catalog" aria-labelledby="collection-catalog-title">
+      <div class="section-heading-row collection-heading-row">
+        <div>
+          <p class="eyebrow">Acquisition log</p>
+          <h2 class="section-heading" id="collection-catalog-title">The complete catalog</h2>
+        </div>
+        <p class="section-note">Newest first · Updated October 2026</p>
+      </div>
+
+      {years.map((year) => (
+        <section class="collection-year" aria-labelledby={`year-${year}`}>
+          <div class="collection-year-heading">
+            <h3 id={`year-${year}`}>{year}</h3>
+            <span>{collection.filter((item) => item.date.startsWith(year)).length} sets</span>
+          </div>
+          <ol class="collection-list">
+            {collection
+              .filter((item) => item.date.startsWith(year))
+              .map((item) => (
+                <li class="collection-item">
+                  <time datetime={item.date}>{dateFormatter.format(new Date(`${item.date}T00:00:00Z`))}</time>
+                  <div class="collection-item-name">
+                    <strong>{item.name}</strong>
+                    <div class="collection-tags">
+                      {item.note && <span>{item.note}</span>}
+                      {item.gift && <span class="collection-tag-gift">Gift</span>}
+                    </div>
+                  </div>
+                  <span class="collection-set-number">#{item.number}</span>
+                </li>
+              ))}
+          </ol>
+        </section>
+      ))}
+    </section>
   </div>
 </BaseLayout>
