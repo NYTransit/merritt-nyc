@@ -683,12 +683,22 @@ p {
   font-size: clamp(1.5rem, 2.8vw, 2.35rem);
 }
 
+.collection-stats .collection-stat-infinity {
+  font-family: var(--sans);
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  font-weight: 300;
+}
+
 .collection-heading-row {
   margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
 .collection-heading-row .eyebrow {
   margin-bottom: 0.8rem;
+}
+
+.collection-heading-row .section-note a {
+  color: inherit;
 }
 
 .collection-gallery {
@@ -759,21 +769,49 @@ p {
 }
 
 .collection-item {
-  display: grid;
-  padding-block: 1.05rem;
   border-bottom: 1px solid var(--border);
-  grid-template-columns: 4.75rem minmax(0, 1fr) auto;
-  align-items: baseline;
-  gap: 1.25rem;
 }
 
 .collection-item:first-child {
-  padding-top: 0.2rem;
+  margin-top: -0.65rem;
 }
 
 .collection-item:last-child {
-  padding-bottom: 0.2rem;
   border-bottom: 0;
+}
+
+.collection-item-link {
+  display: grid;
+  padding-block: 0.85rem;
+  text-decoration: none;
+  grid-template-columns: 6rem 4.5rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+}
+
+.collection-item-link:hover .collection-item-name strong {
+  color: var(--accent-hover);
+}
+
+.collection-item-thumb {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  aspect-ratio: 4 / 3;
+  place-items: center;
+}
+
+.collection-item-thumb img {
+  width: 100%;
+  height: 100%;
+  padding: 0.35rem;
+  object-fit: contain;
+  transition: transform 180ms ease;
+}
+
+.collection-item-link:hover .collection-item-thumb img {
+  transform: scale(1.04);
 }
 
 .collection-item time,
@@ -789,11 +827,7 @@ p {
 }
 
 .collection-item-name {
-  display: flex;
   min-width: 0;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
 }
 
 .collection-item-name strong {
@@ -804,7 +838,8 @@ p {
 
 .collection-tags {
   display: flex;
-  flex: 0 0 auto;
+  margin-top: 0.45rem;
+  flex-wrap: wrap;
   gap: 0.45rem;
 }
 
@@ -817,11 +852,6 @@ p {
   letter-spacing: 0.06em;
   line-height: 1.5;
   text-transform: uppercase;
-}
-
-.collection-tags .collection-tag-gift {
-  border-color: #d9b5a1;
-  color: var(--accent-hover);
 }
 
 .error-page {
@@ -1008,18 +1038,20 @@ p {
   }
 
   .collection-item {
-    grid-template-columns: 4.2rem minmax(0, 1fr);
-    gap: 0.8rem;
+    margin: 0;
   }
 
-  .collection-item-name {
-    display: block;
+  .collection-item-link {
+    grid-template-columns: 5rem minmax(0, 1fr);
+    gap: 0.25rem 0.9rem;
   }
 
-  .collection-tags {
-    margin-top: 0.45rem;
+  .collection-item-thumb {
+    grid-row: 1 / span 3;
   }
 
+  .collection-item time,
+  .collection-item-name,
   .collection-set-number {
     grid-column: 2;
   }
