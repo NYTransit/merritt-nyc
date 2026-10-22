@@ -23,9 +23,8 @@ jobs:
       - name: Build and upload Astro site
         uses: withastro/action@v6
         env:
-          # Use the repository subpath until merritt.nyc DNS is ready. Change this to
-          # custom-domain (or remove it) when the custom domain is attached.
-          DEPLOY_TARGET: github-project
+          # Build root-relative URLs for the merritt.nyc custom domain.
+          DEPLOY_TARGET: custom-domain
 
   deploy:
     needs: build
