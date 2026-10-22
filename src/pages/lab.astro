@@ -151,16 +151,16 @@ const mcpTools = [
         <header class="lab-section-header">
           <span class="lab-section-number" aria-hidden="true">02</span>
           <div>
-            <p class="eyebrow">The daily machine</p>
+            <p class="eyebrow">The working machines</p>
             <h2>My Mac setup</h2>
             <p>
-              The AI machine is a compact Mac mini that also serves as the development workstation and control point
-              for the rest of the home network.
+              The M6 Mac mini is the stationary AI and orchestration machine. Its portable counterpart is an M5
+              MacBook Air for everyday work and development away from the desk.
             </p>
           </div>
         </header>
 
-        <dl class="lab-stats" aria-label="Mac mini hardware summary">
+        <dl class="lab-stats" aria-label="M6 Mac mini hardware summary">
           <div><dt>Chip</dt><dd class="lab-stat-text">Apple M6</dd></div>
           <div><dt>CPU cores</dt><dd>12</dd></div>
           <div><dt>Memory</dt><dd>32 <small>GB</small></dd></div>
@@ -197,16 +197,70 @@ const mcpTools = [
           </section>
         </div>
 
+        <section class="lab-portable" aria-labelledby="portable-title">
+          <header class="lab-portable-header">
+            <p class="eyebrow">The portable machine</p>
+            <h3 id="portable-title">
+              MacBook Air M5
+              <span>13-inch · 32 GB · 1 TB</span>
+            </h3>
+            <p>
+              The portable counterpart to the AI Mac mini. My MacBook Air handles everyday computing, development on
+              the move, and access to the rest of the home lab. It can run local language models independently for
+              shorter inference, experimentation, and testing; sustained inference and multi-agent workloads stay on
+              the M6 Mac mini.
+            </p>
+          </header>
+
+          <dl class="lab-stats lab-portable-stats" aria-label="M5 MacBook Air hardware summary">
+            <div><dt>Chip</dt><dd class="lab-stat-text">Apple M5</dd></div>
+            <div><dt>CPU / GPU</dt><dd>10 / 10</dd></div>
+            <div><dt>Memory</dt><dd>32 <small>GB</small></dd></div>
+            <div><dt>Internal SSD</dt><dd>1 <small>TB</small></dd></div>
+          </dl>
+
+          <div class="lab-two-column lab-portable-details">
+            <section class="lab-detail-block" aria-labelledby="portable-hardware-title">
+              <div class="lab-detail-heading">
+                <h4 id="portable-hardware-title">Hardware</h4>
+              </div>
+              <ul class="lab-fact-list">
+                <li><strong>Finish and display</strong><span>Starlight · 13.6-inch Liquid Retina</span></li>
+                <li><strong>Neural Engine</strong><span>16 cores</span></li>
+                <li><strong>Wireless</strong><span>Wi-Fi 7 · Bluetooth 6</span></li>
+                <li><strong>Ports</strong><span>2 Thunderbolt 4 · MagSafe 3</span></li>
+              </ul>
+            </section>
+
+            <section class="lab-detail-block" aria-labelledby="portable-role-title">
+              <div class="lab-detail-heading">
+                <h4 id="portable-role-title">Role in the lab</h4>
+              </div>
+              <ul class="lab-fact-list">
+                <li><strong>Portable development</strong><span>Coding, prototyping, and project review away from the main workstation</span></li>
+                <li><strong>Local AI</strong><span>On-device inference and model experimentation</span></li>
+                <li><strong>Network client</strong><span>SMB, AirPlay, and shared home resources</span></li>
+                <li><strong>Daily computing</strong><span>Personal productivity and a portable interface to the lab</span></li>
+              </ul>
+            </section>
+          </div>
+
+          <p class="lab-footnote">
+            The Air is a capable independent computer, not another always-on server. Its hardware configuration is
+            owner-confirmed; its live software inventory and available disk space were not audited from the AI Mac mini.
+          </p>
+        </section>
+
         <section class="lab-detail-block" aria-labelledby="network-title">
           <div class="lab-detail-heading">
             <h3 id="network-title">How the network fits together</h3>
-            <p>A private LAN joins three Macs, while local AI services remain bound to the inference machine.</p>
+            <p>Three Macs share one private LAN, each with a distinct job.</p>
           </div>
-          <div class="lab-network" role="img" aria-label="AI Mac mini, media server, and MacBook Air connected through a private home network">
+          <div class="lab-network" role="img" aria-label="M6 Mac mini for AI and orchestration, M1 Mac mini for media and storage, and M5 MacBook Air for portable work connected through a private home network">
             <div class="lab-network-node">
               <span>Compute</span>
-              <strong>AI Mac mini</strong>
-              <small>Models · router · development</small>
+              <strong>M6 Mac mini</strong>
+              <small>Local AI · development · agents</small>
             </div>
             <div class="lab-network-hub">
               <span aria-hidden="true">↔</span>
@@ -216,19 +270,18 @@ const mcpTools = [
             </div>
             <div class="lab-network-node">
               <span>Storage</span>
-              <strong>Media server</strong>
-              <small>Plex · shares · backups</small>
+              <strong>M1 Mac mini</strong>
+              <small>Plex · storage · archives · backups</small>
             </div>
             <div class="lab-network-node">
-              <span>Personal</span>
-              <strong>MacBook Air</strong>
-              <small>SMB · AirPlay · same LAN</small>
+              <span>Portable</span>
+              <strong>M5 MacBook Air</strong>
+              <small>Development · local AI · personal workstation</small>
             </div>
           </div>
           <p class="lab-footnote">
-            The MacBook Air advertises itself as model Mac17,3 and is reachable over SMB and AirPlay. No trusted
-            unattended login was available during this audit, so its storage and software remain intentionally
-            unreported.
+            The MacBook Air hardware is confirmed as model Mac17,3. Its live software inventory and currently available
+            disk space were not audited from the AI Mac mini.
           </p>
         </section>
       </article>

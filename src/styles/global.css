@@ -711,6 +711,69 @@ p {
   gap: clamp(2.5rem, 6vw, 5rem);
 }
 
+.lab-portable {
+  margin-bottom: clamp(3.5rem, 7vw, 5.5rem);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.lab-portable-header {
+  max-width: 800px;
+  margin-bottom: clamp(2rem, 5vw, 3.25rem);
+}
+
+.lab-portable-header .eyebrow {
+  margin-bottom: 0.8rem;
+}
+
+.lab-portable-header h3 {
+  margin-bottom: 1rem;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+}
+
+.lab-portable-header h3 span {
+  display: block;
+  margin-top: 0.65rem;
+  color: var(--accent-hover);
+  font-family: var(--mono);
+  font-size: 0.23em;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.lab-portable-header > p:last-child {
+  margin-bottom: 0;
+  color: var(--text-secondary);
+}
+
+.lab-portable-stats {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  background: var(--background);
+}
+
+.lab-portable-details {
+  margin-bottom: 0;
+}
+
+.lab-portable-details .lab-detail-heading {
+  margin-bottom: 1rem;
+}
+
+.lab-portable-details h4 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
 .lab-fact-list,
 .lab-chip-list {
   margin: 0;
@@ -1414,6 +1477,10 @@ p {
   .lab-fact-list li {
     grid-template-columns: 1fr;
     gap: 0.25rem;
+  }
+
+  .lab-portable {
+    padding: 1.5rem;
   }
 
   .lab-table {

@@ -1,6 +1,6 @@
 ---
 title: My Mac Setup
-description: A 12-core Apple M6 Mac mini with 32 GB of memory, local inference services, containers, development tools, and three-Mac network duties.
+description: An M6 Mac mini for AI and orchestration, an M5 MacBook Air for portable development and local experimentation, and the network connecting both to the media server.
 category: Lab
 year: 2026
 status: Active
