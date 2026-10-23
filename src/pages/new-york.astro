@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import heroImage from '../assets/images/hero-nyc-placeholder.jpg';
 import newYorkImage from '../assets/images/new-york-placeholder.jpg';
 import PageIntro from '../components/PageIntro.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
@@ -18,7 +19,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <h2>A visual notebook in progress</h2>
         <p>
           This will be a place for Manhattan photography, interesting streets and buildings,
-          small discoveries, and the occasional observation about living in New York.
+          small discoveries, and the occasional observation about <a class="quiet-link" href="/about/">living in New York</a>.
         </p>
       </section>
     </div>
@@ -47,5 +48,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <figcaption>Editorial placeholder — replace with a personal photograph.</figcaption>
       </figure>
     </div>
+
+    <RelatedLinks
+      links={[
+        { title: 'About Brian', description: 'From Boston roots to a life firmly planted in New York.', href: '/about/' },
+        { title: 'The Collection', description: 'Including a few landmarks inspired by this city.', href: '/collection/' },
+      ]}
+    />
   </div>
 </BaseLayout>

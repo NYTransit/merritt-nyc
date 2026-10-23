@@ -1,6 +1,7 @@
 ---
 import { externalLinks } from '../data/links';
 import PageIntro from '../components/PageIntro.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
@@ -28,5 +29,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         ))
       }
     </ul>
+
+    <RelatedLinks
+      links={[
+        { title: 'About Brian', description: 'The longer version, right here on the site.', href: '/about/' },
+        { title: 'Projects & experiments', description: 'What I am building, testing, and occasionally breaking.', href: '/projects/' },
+      ]}
+    />
   </div>
 </BaseLayout>

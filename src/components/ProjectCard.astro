@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../utils/paths';
+
 interface Props {
   title: string;
   description: string;
@@ -6,9 +8,10 @@ interface Props {
   year: number;
   status: string;
   index: number;
+  href: string;
 }
 
-const { title, description, category, year, status, index } = Astro.props;
+const { title, description, category, year, status, index, href } = Astro.props;
 ---
 
 <article class="project-card">
@@ -19,7 +22,10 @@ const { title, description, category, year, status, index } = Astro.props;
       <span>{year}</span>
       <span>{status}</span>
     </div>
-    <h2>{title}</h2>
-    <p>{description}</p>
+    <a class="project-link" href={withBase(href)}>
+      <h2>{title}</h2>
+      <p>{description}</p>
+      <span class="project-destination">View section <span aria-hidden="true">→</span></span>
+    </a>
   </div>
 </article>

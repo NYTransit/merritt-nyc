@@ -1,5 +1,6 @@
 ---
 import PageIntro from '../components/PageIntro.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const collection = [
@@ -109,7 +110,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
           A little bit of everything, with a definite pull to a galaxy far, far away.
         </h2>
         <p>
-          It all started with building the World Map with my daughters, then flying off in the Falcon together.
+          It all started with building the World Map <a class="quiet-link" href="/about/#family-heading">with my daughters</a>, then flying off in the Falcon together.
           Now I’m undertaking the Executor Super Star Destroyer.
         </p>
       </div>
@@ -225,5 +226,12 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
         </section>
       ))}
     </section>
+
+    <RelatedLinks
+      links={[
+        { title: 'About Brian', description: 'The family, work, and curiosity behind the collection.', href: '/about/' },
+        { title: 'The Lab', description: 'Macs, local models, servers, and ongoing experiments.', href: '/lab/' },
+      ]}
+    />
   </div>
 </BaseLayout>

@@ -11,6 +11,7 @@ const projects = defineCollection({
     year: z.number(),
     status: z.enum(['Draft', 'Active', 'Completed', 'Ongoing']),
     order: z.number(),
+    href: z.string(),
     externalUrl: z.url().optional(),
   }),
 });

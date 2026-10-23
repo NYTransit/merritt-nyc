@@ -1,5 +1,6 @@
 ---
 import PageIntro from '../components/PageIntro.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
@@ -18,7 +19,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <section class="prose-section" aria-labelledby="about-intro">
         <h2 id="about-intro">The longer version</h2>
         <p>
-          I'm Brian. Originally from Boston, now firmly planted in New York City. I've spent most
+          I'm Brian. Originally from Boston, now firmly planted in <a class="quiet-link" href="/new-york/">New York City</a>. I've spent most
           of my career building and scaling technology companies, but there's quite a bit more to
           life than work.
         </p>
@@ -35,7 +36,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           imagination that runs circles around mine, with interests ranging from animation to
           mythology.
         </p>
-        <p>Being their dad is easily the most important part of my life.</p>
+        <p>
+          Being their dad is easily the most important part of my life. We also started
+          <a class="quiet-link" href="/collection/">the LEGO collection</a> together with the World Map.
+        </p>
       </section>
 
       <section class="prose-section" aria-labelledby="work-heading">
@@ -45,16 +49,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           and software, which means I get to spend a lot of time around technology that's changing
           faster than most of us can keep up with.
         </p>
+        <p>Some of what I'm building and testing lives in <a class="quiet-link" href="/projects/">Projects & experiments</a>.</p>
       </section>
 
       <section class="prose-section" aria-labelledby="curiosity-heading">
         <h2 id="curiosity-heading">Curiosity</h2>
         <p>
           I've always liked figuring out how things work, especially when they probably don't need
-          fixing. That curiosity has led to a collection of Macs, home servers, AI experiments,
-          LEGO models, and a few projects that have taken considerably longer than expected.
+          fixing. That curiosity has led to <a class="quiet-link" href="/lab/">a collection of Macs, home servers, and AI experiments</a>,
+          <a class="quiet-link" href="/collection/">LEGO models</a>, and a few projects that have taken considerably longer than expected.
         </p>
       </section>
     </div>
+
+    <RelatedLinks
+      links={[
+        { title: 'The Lab', description: 'Local AI, Macs, servers, and the network connecting them.', href: '/lab/' },
+        { title: 'The Collection', description: 'Starships, spacecraft, supercars, and landmarks.', href: '/collection/' },
+        { title: 'New York', description: 'A visual notebook about the city I call home.', href: '/new-york/' },
+      ]}
+    />
   </div>
 </BaseLayout>

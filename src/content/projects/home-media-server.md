@@ -5,6 +5,7 @@ category: Lab
 year: 2026
 status: Active
 order: 3
+href: /lab/#home-media-server
 ---
 
 The public Lab page contains aggregate storage and library figures while keeping network addresses, accounts, and media titles private.

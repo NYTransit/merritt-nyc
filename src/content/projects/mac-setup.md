@@ -5,6 +5,7 @@ category: Lab
 year: 2026
 status: Active
 order: 2
+href: /lab/#mac-setup
 ---
 
 The public Lab page contains a reviewed hardware, software, agent-tooling, and network inventory.

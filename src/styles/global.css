@@ -457,6 +457,16 @@ p {
   color: var(--accent-hover);
 }
 
+.quiet-link-arrow {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 .editorial-feature {
   margin-block: clamp(4rem, 8vw, 7rem);
 }
@@ -530,6 +540,126 @@ p {
   max-width: 680px;
   margin-bottom: 0;
   color: var(--text-secondary);
+}
+
+.project-link {
+  display: block;
+  text-decoration: none;
+}
+
+.project-link h2,
+.project-link p {
+  transition: color 180ms ease;
+}
+
+.project-destination {
+  display: inline-flex;
+  margin-top: 1.15rem;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--accent-hover);
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.project-destination span {
+  transition: transform 180ms ease;
+}
+
+.project-link:hover h2,
+.project-link:hover p {
+  color: var(--accent-hover);
+}
+
+.project-link:hover .project-destination span {
+  transform: translateX(3px);
+}
+
+.related-links {
+  margin-top: clamp(5rem, 10vw, 8rem);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--border);
+}
+
+.related-links-heading {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.related-links-heading .eyebrow {
+  margin-bottom: 0.65rem;
+}
+
+.related-links-heading h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+
+.related-links-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--border);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  list-style: none;
+}
+
+.related-links-list li {
+  border-top: 1px solid var(--border);
+}
+
+.related-links-list a {
+  display: grid;
+  min-height: 10rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  grid-template-columns: 2rem 1fr;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.related-link-index {
+  padding-top: 0.2rem;
+  color: var(--accent-hover);
+  font-family: var(--mono);
+  font-size: 0.64rem;
+}
+
+.related-link-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.related-link-copy strong {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 1rem;
+}
+
+.related-link-copy > span {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.related-link-arrow {
+  color: var(--text-muted);
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.related-links-list a:hover strong,
+.related-links-list a:hover .related-link-arrow {
+  color: var(--accent-hover);
+}
+
+.related-links-list a:hover .related-link-arrow {
+  transform: translateX(3px);
 }
 
 .lab-feature {
@@ -1309,6 +1439,7 @@ p {
 .footer-side ul {
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;
   list-style: none;
 }
 

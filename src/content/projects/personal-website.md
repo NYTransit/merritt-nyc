@@ -5,6 +5,7 @@ category: Website
 year: 2026
 status: Active
 order: 4
+href: /
 ---
 
 This site is the project. Future notes can cover design decisions and the static publishing setup without exposing private infrastructure.

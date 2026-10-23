@@ -18,7 +18,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
       subtitle="Things I'm building, testing, collecting, and occasionally breaking."
     />
 
-    <div class="project-list" aria-label="Project drafts">
+    <div class="project-list" aria-label="Project index">
       {
         projects.map((project, index) => (
           <ProjectCard
@@ -28,16 +28,17 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
             year={project.data.year}
             status={project.data.status}
             index={index + 1}
+            href={project.data.href}
           />
         ))
       }
     </div>
 
-    <aside class="placeholder-note" aria-label="Project content note">
-      <strong>Draft index</strong>
+    <aside class="placeholder-note" aria-label="Project index note">
+      <strong>Living index</strong>
       <p>
-        These are intentionally light starting points, not claims about finished work. Details,
-        photographs, and technical notes can be added after they are reviewed for publication.
+        Each entry leads to the part of the site where the project is documented. The notes will
+        keep growing as the work changes.
       </p>
     </aside>
   </div>

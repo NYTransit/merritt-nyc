@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import labImage from '../assets/images/lab-placeholder.jpg';
 import PageIntro from '../components/PageIntro.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const models = [
@@ -353,5 +354,12 @@ const mcpTools = [
         </section>
       </article>
     </div>
+
+    <RelatedLinks
+      links={[
+        { title: 'Projects & experiments', description: 'The living index of things being built and tested.', href: '/projects/' },
+        { title: 'The Collection', description: 'A different kind of building, one brick at a time.', href: '/collection/' },
+      ]}
+    />
   </div>
 </BaseLayout>

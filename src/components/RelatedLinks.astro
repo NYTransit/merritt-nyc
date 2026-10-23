@@ -1,0 +1,41 @@
+---
+import { withBase } from '../utils/paths';
+
+interface RelatedLink {
+  title: string;
+  description: string;
+  href: string;
+}
+
+interface Props {
+  links: RelatedLink[];
+  title?: string;
+}
+
+const { links, title = 'Follow the threads.' } = Astro.props;
+---
+
+<nav class="related-links" aria-labelledby="related-links-title">
+  <div class="related-links-heading">
+    <p class="eyebrow">Keep exploring</p>
+    <h2 id="related-links-title">{title}</h2>
+  </div>
+  <ol class="related-links-list">
+    {
+      links.map((link, index) => (
+        <li>
+          <a href={withBase(link.href)}>
+            <span class="related-link-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <span class="related-link-copy">
+              <strong>
+                {link.title}
+                <span class="related-link-arrow" aria-hidden="true">→</span>
+              </strong>
+              <span>{link.description}</span>
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+</nav>

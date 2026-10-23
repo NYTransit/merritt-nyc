@@ -1,14 +1,21 @@
 ---
 import { externalLinks } from '../data/links';
+import { withBase } from '../utils/paths';
 
 const year = new Date().getFullYear();
+const internalLinks = [
+  { label: 'Lab', href: '/lab/' },
+  { label: 'Collection', href: '/collection/' },
+  { label: 'New York', href: '/new-york/' },
+];
 ---
 
 <footer class="site-footer">
   <div class="shell footer-inner">
     <p>© {year} Brian Merritt</p>
     <div class="footer-side">
-      <ul aria-label="External profiles">
+      <ul aria-label="Featured pages and external profiles">
+        {internalLinks.map((link) => <li><a href={withBase(link.href)}>{link.label}</a></li>)}
         {
           externalLinks.map((link) => (
             <li>
