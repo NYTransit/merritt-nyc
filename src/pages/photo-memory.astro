@@ -1,0 +1,317 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const googleFormEmbedUrl =
+  'https://docs.google.com/forms/d/e/1FAIpQLSeoXLP5KiVahw95upDLQZu_kvKVv4CHw9n1CuLauUEl-EaNaA/viewform?embedded=true';
+
+const storyPrompts = [
+  'Show me how our family holidays changed as the kids grew up.',
+  'Find the moments that capture Dad\'s sense of humor.',
+  'Help me tell the story of our summers at the lake.',
+  'What are some wonderful moments between Mom and the grandchildren?',
+  'Show me how our neighborhood changed over the years.',
+  'Find meaningful moments from my daughter\'s childhood that I may have forgotten.',
+];
+---
+
+<BaseLayout
+  title="A better way to rediscover your photos | MERRITT.NYC"
+  description="Brian is exploring a private way to rediscover the stories hidden in years of family photos—and would value your honest reaction."
+>
+  <article class="photos-page">
+    <header class="photos-hero">
+      <p class="eyebrow">A small favor from Brian</p>
+      <h1>What if your photos could help tell their own stories?</h1>
+      <p class="photos-lede">
+        I’m exploring an idea for an app that helps people rediscover the stories hidden in years of
+        family photos. Before I build too much, I’d love your honest opinion—even if your answer is,
+        “I wouldn’t use this.”
+      </p>
+      <a class="survey-jump" href="#survey">Take the five-minute survey <span aria-hidden="true">↓</span></a>
+    </header>
+
+    <section class="photos-explainer" aria-labelledby="idea-heading">
+      <div class="photos-explainer-copy">
+        <p class="section-number" aria-hidden="true">01</p>
+        <div>
+          <h2 id="idea-heading">The idea</h2>
+          <p>
+            Most photo apps are pretty good at finding a person, place, or date. I’m interested in
+            something harder: helping you explore a memory, a relationship, or a chapter of your life
+            when you don’t already know which individual photo you’re looking for.
+          </p>
+          <p>
+            You might describe a memory or story in your own words. The app would gather possible
+            photos and help shape them into a collection or story for you to review, correct, and make
+            your own.
+          </p>
+        </div>
+      </div>
+
+      <div class="prompt-panel" aria-labelledby="prompt-heading">
+        <p class="prompt-kicker" id="prompt-heading">You might ask things like…</p>
+        <ul class="prompt-list">
+          {storyPrompts.map((prompt, index) => (
+            <li>
+              <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              <p>“{prompt}”</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <aside class="privacy-note" aria-labelledby="privacy-heading">
+      <p class="section-number" aria-hidden="true">02</p>
+      <div>
+        <h2 id="privacy-heading">Your photos would remain yours.</h2>
+        <p>
+          The idea is for the app to work privately with Apple Photos on your Mac. It would not
+          delete, move, or change your photos. Any story or connection it suggests would be yours to
+          review and correct.
+        </p>
+      </div>
+    </aside>
+
+    <section class="survey-section" id="survey" aria-labelledby="survey-heading">
+      <div class="survey-intro">
+        <div>
+          <p class="section-number" aria-hidden="true">03</p>
+          <h2 id="survey-heading">Tell me what you think.</h2>
+        </div>
+        <div>
+          <p>
+            This should take about five minutes. You don’t need to provide your name or email. If
+            you’re open to a conversation or trying an early version, you can leave contact
+            information at the end—but it’s completely optional.
+          </p>
+        </div>
+      </div>
+
+      {
+        googleFormEmbedUrl ? (
+          <div class="form-frame">
+            <iframe
+              src={googleFormEmbedUrl}
+              title="Photo memories survey"
+              loading="lazy"
+            >Loading…</iframe>
+          </div>
+        ) : (
+          <div class="form-pending" role="status">
+            <p class="eyebrow">Survey setup</p>
+            <h3>The questionnaire is almost ready.</h3>
+            <p>This page is still a private draft. The survey will appear here before the page is shared.</p>
+          </div>
+        )
+      }
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .photos-page {
+    width: min(calc(100% - (var(--gutter) * 2)), var(--content-width));
+    margin-inline: auto;
+  }
+
+  .photos-hero {
+    max-width: 930px;
+    padding-block: clamp(4.5rem, 10vw, 8rem) clamp(5rem, 11vw, 9rem);
+  }
+
+  .photos-hero h1 {
+    max-width: 900px;
+    margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+    font-family: var(--serif);
+    font-size: clamp(3rem, 7.5vw, 6.4rem);
+    font-weight: 500;
+    letter-spacing: -0.06em;
+  }
+
+  .photos-lede {
+    max-width: 760px;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+    font-size: clamp(1.15rem, 2.25vw, 1.45rem);
+    line-height: 1.65;
+  }
+
+  .survey-jump {
+    display: inline-flex;
+    padding-block: 0.35rem;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--accent-hover);
+    font-weight: 650;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .photos-explainer,
+  .privacy-note,
+  .survey-section {
+    padding-block: clamp(4rem, 9vw, 7rem);
+    border-top: 1px solid var(--border);
+  }
+
+  .photos-explainer-copy,
+  .privacy-note {
+    display: grid;
+    grid-template-columns: minmax(3.5rem, 0.35fr) minmax(0, 1.65fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+  }
+
+  .photos-explainer-copy > div,
+  .privacy-note > div {
+    max-width: var(--reading-width);
+  }
+
+  .section-number {
+    color: var(--accent-hover);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+  }
+
+  .photos-page h2 {
+    margin-bottom: 1.5rem;
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 500;
+    letter-spacing: -0.045em;
+  }
+
+  .photos-explainer-copy p:not(.section-number),
+  .privacy-note p:not(.section-number),
+  .survey-intro p {
+    color: var(--text-secondary);
+    font-size: clamp(1.05rem, 2vw, 1.2rem);
+  }
+
+  .prompt-panel {
+    margin-top: clamp(4rem, 9vw, 7rem);
+    padding: clamp(1.5rem, 4vw, 3rem);
+    background: #f1ece6;
+  }
+
+  .prompt-kicker {
+    margin-bottom: 1.75rem;
+    color: var(--accent-hover);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .prompt-list {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    list-style: none;
+  }
+
+  .prompt-list li {
+    display: grid;
+    min-height: 10rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    grid-template-columns: 2rem 1fr;
+    gap: 1rem;
+    border-top: 1px solid rgb(32 32 32 / 12%);
+  }
+
+  .prompt-list li:nth-child(odd) {
+    border-right: 1px solid rgb(32 32 32 / 12%);
+  }
+
+  .prompt-list span {
+    padding-top: 0.25rem;
+    color: var(--text-muted);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+  }
+
+  .prompt-list p {
+    align-self: center;
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+    font-style: italic;
+    line-height: 1.35;
+  }
+
+  .privacy-note {
+    margin: 0;
+  }
+
+  .survey-intro {
+    display: grid;
+    margin-bottom: clamp(2.5rem, 6vw, 4rem);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 5rem);
+  }
+
+  .survey-intro h2 {
+    margin-bottom: 0;
+  }
+
+  .form-frame,
+  .form-pending {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .form-frame iframe {
+    display: block;
+    width: 100%;
+    min-height: 1600px;
+    border: 0;
+  }
+
+  .form-pending {
+    padding: clamp(2rem, 6vw, 4.5rem);
+    text-align: center;
+  }
+
+  .form-pending h3 {
+    margin-bottom: 0.75rem;
+    font-family: var(--serif);
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 500;
+  }
+
+  .form-pending p:last-child {
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 700px) {
+    .photos-explainer-copy,
+    .privacy-note,
+    .survey-intro {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .prompt-list {
+      grid-template-columns: 1fr;
+    }
+
+    .prompt-list li:nth-child(odd) {
+      border-right: 0;
+    }
+
+    .prompt-list li {
+      min-height: 0;
+    }
+
+    .form-frame {
+      margin-inline: calc(var(--gutter) * -1);
+      border-inline: 0;
+    }
+  }
+</style>
