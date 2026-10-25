@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import photoMemoryIcon from '../assets/images/photo-memory-icon.png';
 
 const googleFormEmbedUrl =
   'https://docs.google.com/forms/d/e/1FAIpQLSeoXLP5KiVahw95upDLQZu_kvKVv4CHw9n1CuLauUEl-EaNaA/viewform?embedded=true';
@@ -17,6 +18,8 @@ const storyPrompts = [
 <BaseLayout
   title="A better way to rediscover your photos | MERRITT.NYC"
   description="Brian is exploring a private way to rediscover the stories hidden in years of family photos—and would value your honest reaction."
+  socialImage={photoMemoryIcon}
+  socialImageAlt="Photo Memory app icon"
 >
   <article class="photos-page">
     <header class="photos-hero">
